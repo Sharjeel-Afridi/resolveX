@@ -14,7 +14,7 @@ const Results = ({api, input}) => {
     console.log("results 1");
     const fuseOptions = {
         keys: ['Subjects'],
-        threshold: 0.7,
+        threshold: 0.5,
     };
     const fuse = new Fuse([], fuseOptions);
     fuse.setCollection(api.items);
