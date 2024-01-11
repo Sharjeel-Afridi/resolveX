@@ -19,16 +19,25 @@ const Main = () => {
     function toggleClick(){
         setIsDarkMode(!isDarkMode);
     }
-   
+    useEffect(() =>{
+        document.body.className = isDarkMode ? 'dark-mode' : '';
+    },[isDarkMode]);
 
     useEffect(()=> {
-        document.body.className = isDarkMode ? 'dark-mode' : '';
         async function apifetch(){
             const apiURL =  'https://sharjeel-afridi.github.io/resolvexApi/api.json';
-            setApiResponse(await fetch(apiURL).then((resp)=>{return resp.json()}).then(data => {return data}));
+            try{
+                setApiResponse(await fetch(apiURL).then((resp)=>{return resp.json()}).then(data => {return data}));
+            }catch{
+                setTimeout(() => {
+                    console.log("tryagain")
+                    apifetch();
+                }, 5000);
+            }
+            
         }
         apifetch();
-    }, [isDarkMode])
+    }, []);
     
     return (
         <div className="container">

@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import Fuse from "fuse.js";
 import { useEffect } from "react";
-import "../src/styles.css";
 
 
 const Results = ({api, input}) => {
