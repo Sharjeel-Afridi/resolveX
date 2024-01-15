@@ -198,6 +198,14 @@ select:focus-visible{
   position: relative;
   font-family: sans-serif;
 }
+.no-results{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  height: 200px;
+  width: 100%;
+}
 
 .new-div .notes-div {
   display: flex;
