@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 const Results = ({api, input}) => {
 
     const [selectedFilter, setSelectedFilter] = useState('All');
-    const results = useSearch(api,input);
+    const unsortedResults = useSearch(api,input);
+
+    const results = unsortedResults.sort((a,b)=> a.item.Title.localeCompare(b.item.Title));
     
     useEffect(()=>{
         document.getElementById('new-div').scrollIntoView({behavior:'smooth'});
