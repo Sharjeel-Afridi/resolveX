@@ -1,5 +1,6 @@
 import { useState , useEffect} from "react";
 import useFetch from "../utils/useFetch";
+import { Link } from "react-router-dom";
 import Results from "./Results";
 import Moon from "../moon.png";
 import Sun from "../sun.png";
@@ -37,6 +38,7 @@ const Main = () => {
     return (
         <div className="container">
             <button className="toggle-btn" id="toggle-btn" onClick={toggleClick}><img src={isDarkMode ? Sun : Moon}/> </button>        
+            <Link to="/pyqs"><p className={`pyqs-btn ${isDarkMode ? 'dark-mode' : ''}`}>PYQ</p></Link>
             <div className="main">
                 <div className="title">
                     <h1>resolveX</h1>

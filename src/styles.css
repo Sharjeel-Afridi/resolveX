@@ -9,17 +9,38 @@ body{
 }
 
 .main{
-    height: 100vh;
-    width: calc(100vw - 8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 50px;
+  height: 100vh;
+  width: calc(100vw - 8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
 }
 .title{
-    font-size: 3rem;
+  font-size: 3rem;
 }
+.pyqs-btn{
+  position: absolute;
+  top: 2vh;
+  left: 4vw;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.pyqs-btn:hover{
+  font-weight: 400;
+  border-bottom: 2px solid black;
+  
+}
+.dark-mode .pyqs-btn{
+  color: white;
+} 
+.dark-mode .pyqs-btn:hover{
+  /* background: white;
+  color: black; */
+  border-bottom: 2px solid white
+}
+
 .input-div{
     display: flex;
     justify-content: center;
@@ -254,61 +275,7 @@ img{
 
 
 /* These are style for loading animation */
-/* .lds-ellipsis {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-}
-.lds-ellipsis div {
-    position: absolute;
-    top: 33px;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: #000;
-    animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-.lds-ellipsis div:nth-child(1) {
-    left: 8px;
-    animation: lds-ellipsis1 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(2) {
-    left: 8px;
-    animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(3) {
-    left: 32px;
-    animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(4) {
-    left: 56px;
-    animation: lds-ellipsis3 0.6s infinite;
-}
-@keyframes lds-ellipsis1 {
-    0% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-@keyframes lds-ellipsis3 {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(0);
-    }
-}
-@keyframes lds-ellipsis2 {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(24px, 0);
-    }
-} */
+
   
 
 ::-webkit-scrollbar{

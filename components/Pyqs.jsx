@@ -24,6 +24,18 @@ const Pyqs = () => {
         </div>
     );
     
+    if(apiResponse === null){
+        return (
+            <div className="loading-div">
+                <div class="lds-ellipsis">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <>
             {renderSection("First Year B.Tech & B.Arch", "1 year", "1")}
