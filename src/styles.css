@@ -170,12 +170,6 @@ body{
 select:hover{
   box-shadow: 0px 0px 20px 1px #ffbb763f;
 }
-select option:checked{
-  background-color: ;
-}
-select option:hover{
-  background-color: red;
-}
 select:focus-visible{
   outline: none;
 }

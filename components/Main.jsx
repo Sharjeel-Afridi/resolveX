@@ -10,6 +10,8 @@ const Main = () => {
     const [ searchTerm, setSearchTerm] = useState("");
     const [showResults, setShowResults] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
+    const apiURL =  'https://sharjeel-afridi.github.io/resolvexApi/api.json';
+
     function handleInput(e){
         setSearchTerm(e.target.value);
     }
@@ -29,7 +31,7 @@ const Main = () => {
         document.body.className = isDarkMode ? 'dark-mode' : '';
     },[isDarkMode]);
 
-    const apiResponse = useFetch();
+    const apiResponse = useFetch(apiURL);
     
 
     return (

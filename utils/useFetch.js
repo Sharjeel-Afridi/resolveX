@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 
-const useFetch = () => {
+const useFetch = (apiURL) => {
     
     const [apiResponse, setApiResponse] = useState(null);
     useEffect(()=> {
         async function apifetch(){
-            const apiURL =  'https://sharjeel-afridi.github.io/resolvexApi/api.json';
+            
             try{
                 setApiResponse(await fetch(apiURL).then((resp)=>{return resp.json()}).then(data => {return data}));
                 
                 
             }catch{
                 console.log("catch")
+                console.log(apiURL)
                 setTimeout(() => {
                     apifetch();
                 }, 5000);

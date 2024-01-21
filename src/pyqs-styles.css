@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.pyqs-container{
+    display: flex;
+    flex-direction:column;
+    width: 100vw;
+    margin: 2rem;
+}
+
+.first-year{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pyqs-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 200px;
+    padding: 10px;
+    background-color: aqua;
+    font-weight: 600;
+    border-radius: 10px;
+}
+.pyqs-div:hover{
+    box-shadow: 0 0 10px 1px rgb(0, 0, 0,0.1);
+}
