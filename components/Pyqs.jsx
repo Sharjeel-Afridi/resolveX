@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
 import '../src/pyqs-styles.css';
+import '../src/styles.css';
+import Moon from "../moon.png";
+import Sun from "../sun.png";
 import useFetch from "../utils/useFetch";
 
 const Pyqs = () => {
-
+    const [isDarkMode, setIsDarkMode] = useState(false);
     const apiURL =  'https://notes-search.pockethost.io/api/collections/pyqs/records?perPage=100';
     const apiResponse = useFetch(apiURL);
-        
+    
+    function handleClick(url){
+        window.open(url)
+    }
+    function toggleClick(){
+        setIsDarkMode(!isDarkMode);
+    }
     console.log(apiResponse)
     const renderSection = (title, branch, semester) => (
         <div className="pyqs-container">
@@ -16,7 +25,7 @@ const Pyqs = () => {
                 {apiResponse != null && apiResponse.items
                     .filter((element) => element.Branch === branch && element.semester === semester)
                     .map((element) => (
-                        <div key={element.id} className="pyqs-div">
+                        <div key={element.id} className="pyqs-div" onClick={() => {handleClick(element.link)}}>
                             <span className="pyq-year">{element.year}</span>
                         </div>
                     ))}
@@ -26,6 +35,7 @@ const Pyqs = () => {
     
     if(apiResponse === null){
         return (
+            <>
             <div className="loading-div">
                 <div class="lds-ellipsis">
                     <div></div>
@@ -33,11 +43,13 @@ const Pyqs = () => {
                     <div></div>
                 </div>
             </div>
+            </>
         )
     }
 
     return (
         <>
+            <button className="toggle-btn" id="toggle-btn" onClick={toggleClick}><img src={isDarkMode ? Sun : Moon}/> </button>
             {renderSection("First Year B.Tech & B.Arch", "1 year", "1")}
             {renderSection("", "1 year", "2")}
             {renderSection("B.Tech Computer Science", "B.Tech CS", "3")}
