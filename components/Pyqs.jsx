@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import '../src/pyqs-styles.css';
+import { useEffect,useState } from "react";
 import '../src/styles.css';
 import Moon from "../moon.png";
 import Sun from "../sun.png";
@@ -10,6 +9,10 @@ const Pyqs = () => {
     const apiURL =  'https://notes-search.pockethost.io/api/collections/pyqs/records?perPage=100';
     const apiResponse = useFetch(apiURL);
     
+    useEffect(() =>{
+        document.body.className = isDarkMode ? 'dark-mode' : '';
+    },[isDarkMode]);
+
     function handleClick(url){
         window.open(url)
     }
@@ -21,11 +24,11 @@ const Pyqs = () => {
         <div className="pyqs-container">
            {title !== "" && <h1>{title}</h1>}
             <h3>{`Semester ${semester}`}</h3>
-            <div className="first-year">
+            <div className="pyqs-div">
                 {apiResponse != null && apiResponse.items
                     .filter((element) => element.Branch === branch && element.semester === semester)
                     .map((element) => (
-                        <div key={element.id} className="pyqs-div" onClick={() => {handleClick(element.link)}}>
+                        <div key={element.id} className="pyqs" onClick={() => {handleClick(element.link)}}>
                             <span className="pyq-year">{element.year}</span>
                         </div>
                     ))}
