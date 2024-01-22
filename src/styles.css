@@ -63,7 +63,7 @@ body{
   top: 0;
   padding-top: 20px ;
   width: 100%;
-  backdrop-filter: blur(2px);
+  background: white;
 }
 .form__group {
     position: relative;
@@ -412,7 +412,9 @@ img{
 .dark-mode .input-div button::before{
   background-color: #ffbb763f;
 }
-
+.dark-mode .sticky{
+  background: #000;
+}
 
 .dark-mode .lds-ellipsis div{
   background: white;
