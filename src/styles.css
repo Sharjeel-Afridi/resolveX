@@ -8,7 +8,12 @@ body{
     font-family: 'Montserrat';
 }
 
+.container{
+  position: relative;
+}
+
 .main{
+  position: relative;
   height: 100vh;
   width: calc(100vw - 8px);
   display: flex;
@@ -19,31 +24,54 @@ body{
 }
 .title{
   font-size: 3rem;
+  margin: 0;
 }
-.pyqs-btn{
+
+.route-btn{
   position: absolute;
-  top: 2vh;
+  top: 30px;
   left: 4vw;
+  color: #000;
+  text-decoration: none;
+  margin: 0;
   font-size: 1.3rem;
-  cursor: pointer;
+  cursor: pointer; 
+  z-index: 10;
 }
-.pyqs-btn:hover{
+.route-btn:hover{
   font-weight: 400;
   border-bottom: 2px solid black;
   
 }
 
 .input-div{
-    display: flex;
-    justify-content: center;
-    align-self: center;
+  position: absolute;
+  top: 70vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
-
+.sticky {
+  position: fixed;
+  top: 0;
+  /* height: 15vh; */
+  padding-top: 20px ;
+  /* background: transparent; */
+  width: 100%;
+  backdrop-filter: blur(2px);
+}
 .form__group {
     position: relative;
     padding: 20px 0 0;
     width: 40vw;
-  }
+}
+/* .field{
+  display: flex;
+  align-items: center;
+} */
   
   .form__field {
     font-family: inherit;
@@ -55,6 +83,7 @@ body{
     color: #000;
     padding: 7px 0;
     background: transparent;
+    backdrop-filter: blur(3px);
     transition: border-color 0.2s;
   }
   
@@ -103,7 +132,7 @@ body{
 
 
 
-.main button{
+.input-div button{
   appearance: none;
   background-color: #FFFFFF;
   border-width: 0;
@@ -133,7 +162,7 @@ body{
   white-space: nowrap;
 }
 
-.main button:before {
+.input-div button:before {
   animation: opacityFallbackOut .5s step-end forwards;
   backface-visibility: hidden;
   background-color: #EBEBEB;
@@ -148,16 +177,16 @@ body{
   width: 100%;
 }
 
-.main button:hover:before {
+.input-div button:hover:before {
   animation: opacityFallbackIn 0s step-start forwards;
   clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
 }
 
-.main button:after {
+.input-div button:after {
   background-color: #FFFFFF;
 }
 
-.main button span {
+.input-div button span {
   z-index: 1;
   position: relative;
 }
@@ -201,6 +230,7 @@ select:focus-visible{
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 2vh 6vw;
+  margin-top: 70px;
   gap: 30px;
   position: relative;
   font-family: sans-serif;
@@ -260,6 +290,7 @@ select:focus-visible{
   border: none;
   background: transparent;
   cursor: pointer;
+  z-index: 1001;
 }
 img{
   height: 30px;
@@ -271,6 +302,7 @@ img{
   flex-direction:column;
   width: calc(100vw - 4rem);
   margin: 2rem;
+  margin-top: 3rem;
 }
 
 .pyqs-div{
@@ -371,11 +403,14 @@ img{
 .dark-mode input{
   color: white;
 }
-.dark-mode .main button{
+.dark-mode .form__field{
+  background: transparent ;
+}
+.dark-mode .input-div button{
   background-color: black;
   color: white;
 }
-.dark-mode .main button::before{
+.dark-mode .input-div button::before{
   background-color: #ffbb763f;
 }
 
@@ -396,10 +431,10 @@ img{
   background-color: rgba(255, 255, 255, 0.075);
   color: white;
 }
-.dark-mode .pyqs-btn{
+.dark-mode .route-btn{
   color: white;
 } 
-.dark-mode .pyqs-btn:hover{
+.dark-mode .route-btn:hover{
   border-bottom: 2px solid white
 }
 
@@ -421,6 +456,10 @@ img{
     right: 10px;
     height: 2rem;
     width: 2rem;
+  }
+  .route-btn{
+    top: 40px;
+    left: 10px;
   }
   img{
     height: 30px;
@@ -445,15 +484,28 @@ img{
     top: 40px;
     right: 20px;
   }
+  .route-btn{
+    top: 40px;
+    left: 20px;
+  }
   img{
     height: 40px;
+  }
+  .form__field:placeholder-shown ~ .form__label {
+    font-size: 0.9em;
+  }
+  .form__label{
+    font-size: 0.9em;
+  }
+  .form__field:focus ~ .form__label {
+    font-size: 0.9em;
   }
   .form__group{
     width: 50vw;
   }
   .form__field{
-    font-size: 1.5rem;
-    padding: 0;
+    font-size: 0.9rem;
+    padding-bottom: 1.2em;
   }
   .new-div .notes-div{
     max-width: 7em;

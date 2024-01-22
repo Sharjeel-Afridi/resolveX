@@ -31,6 +31,22 @@ const Main = () => {
     useEffect(() =>{
         document.body.className = isDarkMode ? 'dark-mode' : '';
     },[isDarkMode]);
+    const [isSticky, setSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      const distanceFromBottom = 423.8;
+      setSticky(offset > distanceFromBottom);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+    }, []);
+
 
     const apiResponse = useFetch(apiURL);
     
@@ -38,18 +54,19 @@ const Main = () => {
     return (
         <div className="container">
             <button className="toggle-btn" id="toggle-btn" onClick={toggleClick}><img src={isDarkMode ? Sun : Moon}/> </button>        
-            <Link to="/pyqs"><p className={`pyqs-btn ${isDarkMode ? 'dark-mode' : ''}`}>PYQ</p></Link>
+            <Link to="/pyqs" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>PYQ</Link>
             <div className="main">
                 <div className="title">
                     <h1>resolveX</h1>
                 </div>
-                <div className="input-div">
+                
+            </div>
+            <div className={`input-div ${isSticky ? 'sticky' : ''}`}>
                     <div className="form__group field">
                         <input  type="input" onChange={handleInput} onKeyDown={handleKeyPress} value={searchTerm} className={`form__field ${isDarkMode ? 'dark-mode' : ''}`} id="input-el" placeholder="Search notes here" required="" />
                         <label htmlFor="input-el" className="form__label">Search for notes here</label>
                     </div>
                     <button id="submit" onClick={handleClick} className={isDarkMode ? 'dark-mode' : ''}><span>SUBMIT</span></button>
-                </div>
             </div>
             {showResults && <Results api={apiResponse} input={searchTerm} />}
         </div>

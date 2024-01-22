@@ -1,5 +1,6 @@
 import { useEffect,useState } from "react";
 import '../src/styles.css';
+import { Link } from "react-router-dom";
 import Moon from "../moon.png";
 import Sun from "../sun.png";
 import useFetch from "../utils/useFetch";
@@ -53,6 +54,7 @@ const Pyqs = () => {
     return (
         <>
             <button className="toggle-btn" id="toggle-btn" onClick={toggleClick}><img src={isDarkMode ? Sun : Moon}/> </button>
+            <Link to="/pyqs" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>NOTES</Link>
             {renderSection("First Year B.Tech & B.Arch", "1 year", "1")}
             {renderSection("", "1 year", "2")}
             {renderSection("B.Tech Computer Science", "B.Tech CS", "3")}
