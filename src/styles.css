@@ -396,7 +396,7 @@ img{
 
 /* DARK  MODE */
 .dark-mode {
-  background-color: #000;
+  background-color: #212121;
   color: white;
 }
 .dark-mode input{
@@ -406,14 +406,14 @@ img{
   background: transparent ;
 }
 .dark-mode .input-div button{
-  background-color: black;
+  background-color: #212121;
   color: white;
 }
 .dark-mode .input-div button::before{
   background-color: #ffbb763f;
 }
 .dark-mode .sticky{
-  background: #000;
+  background: #212121;
 }
 
 .dark-mode .lds-ellipsis div{
@@ -421,10 +421,13 @@ img{
 }
 .dark-mode .new-div .notes-div {
   background-color: rgba(255, 255, 255, 0.075);
-  /* border: 1px solid rgba(0, 0, 0, 0.222); */ 
+  border: 1px solid rgba(255, 255, 255, 0.222);
+}
+.dark-mode .new-div .notes-div:hover{
+  border: 1px solid rgba(255, 255, 255, 0.075);
 }
 .dark-mode .filter-dropdown > select{
-  background-color: black ;
+  background-color: #212121 ;
   color: white;
   border: 1px solid white;
 }
