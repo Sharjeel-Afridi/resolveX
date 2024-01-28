@@ -35,7 +35,7 @@ const Signup = () => {
     <h1 className='text-white font bold'>User Created</h1>
     
   ) : (
-    <div className='container'>
+    <div className='auth-container'>
       
       <div className='form-container'>
         <h1 className='title'>resolveX</h1>

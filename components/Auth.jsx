@@ -28,7 +28,7 @@ const Auth = () => {
     }
 
     return(
-        <div className="container">
+        <div className="auth-container">
             <div className="form-container">
                 <h1 className='title'>resolveX</h1>
                 <h3 className='sub-title'>Login</h3>
