@@ -1,6 +1,7 @@
 import pb from "../lib/pocketbase";
 import useLogout from "../utils/useLogout";
 import useLogin from "../utils/useLogin";
+import { Link } from "react-router-dom";
 import "../src/auth.css";
 
 
@@ -27,26 +28,31 @@ const Auth = () => {
     }
 
     return(
-        <div className="login-div">
-            <h1 className="login">Please Login</h1>
-            <div className="logininput-div">
-                <form onSubmit={handleSubmit} className="input-form">
-                    <label>Email</label>
+        <div className="container">
+            <div className="form-container">
+                <h1 className='title'>resolveX</h1>
+                <h3 className='sub-title'>Login</h3>
+                <form onSubmit={handleSubmit} className="form">
                     <input 
                     type="text" 
-                    className='input-field'
+                    className='input'
                     value={email} 
-                    onChange={(e)=> setEmail(e.target.value)}></input>
+                    onChange={(e)=> setEmail(e.target.value)}
+                    placeholder="Email"
+                    />
 
-                    <label>Password</label>
                     <input 
                     type="password" 
-                    className='input-field'
+                    className='input'
                     value={password} 
-                    onChange={(e)=>setPassword(e.target.value)}></input>
+                    onChange={(e)=>setPassword(e.target.value)}
+                    placeholder="Password"
+                    />
 
-                    <button type="submit" className='login-btn'>Login</button>
+                    <button type="submit" className='submit-btn'>Login</button>
                 </form>
+                <p>New to resolveX?</p>
+                <Link to={"/signup"}> Sign up</Link>
             </div>
         </div>
     )
