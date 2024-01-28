@@ -9,20 +9,16 @@ import useFetch from "../utils/useFetch";
 const Pyqs = () => {
     const apiURL =  'https://notes-search.pockethost.io/api/collections/pyqs/records?perPage=100';
     const apiResponse = useFetch(apiURL);
-    const {SearchBarComponent, searchTerm,showResults,isDarkMode,setIsDarkMode} = SearchBar(0, "pyqinput-div");
+    const {SearchBarComponent, searchTerm,showResults,isDarkMode,setIsDarkMode} = SearchBar(0, "pyqinput-div", "Search for PYQ's");
 
     useEffect(() =>{
         document.body.className = isDarkMode ? 'dark-mode' : '';
     },[isDarkMode]);
 
-    function handleClick(url){
-        window.open(url)
-    }
     function toggleClick(){
         setIsDarkMode(!isDarkMode);
     }
    
-    console.log(apiResponse)
     const renderSection = (title, branch, semester) => (
         <div className="pyqs-container">
            {title !== "" && <h1>{title}</h1>}
@@ -31,9 +27,16 @@ const Pyqs = () => {
                 {apiResponse != null && apiResponse.items
                     .filter((element) => element.Branch === branch && element.semester === semester)
                     .map((element) => (
-                        <div key={element.id} className="pyqs" onClick={() => {handleClick(element.link)}}>
-                            <span className="pyq-year">{element.year}</span>
-                        </div>
+                        <Link 
+                            to={element.link} 
+                            key={element.id} 
+                            className="pyqs" 
+                            target="_blank"
+                        >
+                            <span className="pyq-year">
+                                {element.year}
+                            </span>
+                        </Link> 
                     ))}
             </div>
         </div>
@@ -41,15 +44,13 @@ const Pyqs = () => {
     
     if(apiResponse === null){
         return (
-            <>
             <div className="loading-div">
-                <div class="lds-ellipsis">
+                <div className="lds-ellipsis">
                     <div></div>
                     <div></div>
                     <div></div>
                 </div>
             </div>
-            </>
         )
     }
 
@@ -57,7 +58,7 @@ const Pyqs = () => {
         <>
             {SearchBarComponent}
             <button className="toggle-btn" id="toggle-btn" onClick={toggleClick}><img src={isDarkMode ? Sun : Moon}/> </button>
-            <Link to="/" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>NOTES</Link>
+            <Link to="/" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>resolveX</Link>
             <div className="section-pyqs">
                 {renderSection("First Year B.Tech & B.Arch", "1 year", "1")}
                 {renderSection("", "1 year", "2")}

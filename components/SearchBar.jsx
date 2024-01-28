@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const SearchBar = (distanceFromBottom, classname) => {
+const SearchBar = (distanceFromBottom, classname, placeholder) => {
     
     const [searchTerm, setSearchTerm] = useState("");
     const [isSticky, setSticky] = useState(false);
@@ -47,7 +47,7 @@ const SearchBar = (distanceFromBottom, classname) => {
             required=""
             />
             <label htmlFor="input-el" className="form__label">
-            Search for notes here
+            {placeholder}
             </label>
         </div>
         <button onClick={handleClick} className={isDarkMode ? 'dark-mode' : ''}>

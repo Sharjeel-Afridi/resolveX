@@ -9,7 +9,7 @@ import SearchBar from "./SearchBar";
 
 
 const Main = () => {
-    const {SearchBarComponent, searchTerm,showResults,isDarkMode,setIsDarkMode} = SearchBar(423.8, "");
+    const {SearchBarComponent, searchTerm,showResults,isDarkMode,setIsDarkMode} = SearchBar(432.2, "", "Search for notes here");
     const apiURL =  'https://sharjeel-afridi.github.io/resolvexApi/api.json';
     const apiResponse = useFetch(apiURL);
     

@@ -28,18 +28,18 @@ body{
 }
 
 .route-btn{
-  position: absolute;
+  position: fixed;
   top: 30px;
   left: 4vw;
   color: #000;
   text-decoration: none;
   margin: 0;
   font-size: 1.3rem;
+  font-weight: bold;
   cursor: pointer; 
-  z-index: 10;
+  z-index: 1001;
 }
 .route-btn:hover{
-  font-weight: 400;
   border-bottom: 2px solid black;
   
 }
@@ -313,6 +313,8 @@ img{
 
 .pyqs{
   border: 1px solid black;
+  text-decoration: none;
+  color: #000;
   font-weight: 600;
   height: 6em;
   padding: 1rem;
@@ -433,6 +435,7 @@ img{
 }
 .dark-mode .pyqs{
   background-color: rgba(255, 255, 255, 0.075);
+  border: 1px solid rgba(255, 255, 255, 0.075);
   color: white;
 }
 .dark-mode .route-btn{
