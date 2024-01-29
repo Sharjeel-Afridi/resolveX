@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
+import { useState } from "react";
 import pb from "../lib/pocketbase";
 
 
 export default function useCreateUser(){
-    async function  createUser(email,password,passwordConfirm){
+    const [userName, setUserName] = useState(null);
+    async function  createUser(email,username,password,passwordConfirm){
         try{
             const data = {
-                "username": "",
+                "username": `${username}`,
                 "email": `${email}`,
                 "emailVisibility": true,
                 "password": `${password}`,
@@ -14,10 +16,14 @@ export default function useCreateUser(){
                 "name": ""
             }
             const record = await pb.collection('users').create(data);
+            const authData = await pb.collection('users').authWithPassword(email, password);
+            setUserName(pb.authStore.model.username);
+            
+            console.log('User created successfully');
         }catch(error){
             console.log(error);
         }
     }
-    return createUser;
+    return {createUser, userName};
 } 
 

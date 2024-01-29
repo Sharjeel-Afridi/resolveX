@@ -2,25 +2,23 @@ import { useState } from 'react';
 import useCreateUser from '../utils/useCreateUser';
 import { Link } from 'react-router-dom';
 import "../src/auth.css"
+import Dashboard from './Dashboard';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [userCreated, setUserCreated] = useState(false);
-  const createUser = useCreateUser();
+  const {createUser, userName} = useCreateUser();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     if(password === passwordConfirm){
         try {
-      
-            createUser(email,password,passwordConfirm)
-            console.log('User created successfully');
-            setUserCreated(true);
-            
-            
-          } catch (error) {
+
+          createUser(email,username,password,passwordConfirm);
+
+        } catch (error) {
             console.error('Signup error:', error.message);
           }
     }
@@ -30,9 +28,9 @@ const Signup = () => {
     
   };
 
-  return ( userCreated ? (
+  return ( userName != null ? (
     
-    <h1 className='text-white font bold'>User Created</h1>
+    <Dashboard user={userName}/>
     
   ) : (
     <div className='auth-container'>
@@ -47,6 +45,13 @@ const Signup = () => {
             onChange= {(e) => setEmail(e.target.value)}
             required
             placeholder='Email'
+            className='input'
+          />
+          <input
+            value={username}
+            onChange= {(e) => setUsername(e.target.value)}
+            required
+            placeholder='Username'
             className='input'
           />
           <input
