@@ -5,6 +5,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import "../src/styles.css";
 import Auth from "../components/Auth";
 import Signup from "../components/SignUp";
+import { DarkModeProvider } from "../utils/DarkModeContext";
 
 const appRouter = createBrowserRouter([
     {
@@ -27,4 +28,7 @@ const appRouter = createBrowserRouter([
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={appRouter}/>);
+root.render(
+    <DarkModeProvider>
+        <RouterProvider router={appRouter}/>
+    </DarkModeProvider>);

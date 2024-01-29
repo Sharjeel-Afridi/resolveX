@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import DarkModeContext from "../utils/DarkModeContext";
 
 const SearchBar = (distanceFromBottom, classname, placeholder) => {
     
+    const { isDarkMode } = useContext(DarkModeContext);
     const [searchTerm, setSearchTerm] = useState("");
     const [isSticky, setSticky] = useState(false);
     const [showResults, setShowResults] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
     const handleInput = (e) => {
         setSearchTerm(e.target.value);
     };
@@ -56,9 +57,7 @@ const SearchBar = (distanceFromBottom, classname, placeholder) => {
         </div>
     ),
     searchTerm,
-    showResults,
-    isDarkMode,
-    setIsDarkMode,
+    showResults
     }
 };
 
