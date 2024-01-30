@@ -1,5 +1,4 @@
 import pb from "../lib/pocketbase";
-import useLogout from "../utils/useLogout";
 import useLogin from "../utils/useLogin";
 import { Link } from "react-router-dom";
 import "../src/auth.css";
@@ -9,25 +8,11 @@ import Dashboard from "./Dashboard";
 
 
 const Auth = () => {
-    const { email, setEmail, password, setPassword, login, setLogin, handleSubmit } = useLogin();
-    
-
-    const logout = useLogout();
+    const { email, setEmail, password, setPassword, login, handleSubmit } = useLogin();
 
     if(login){
         return (
-            <>
-                <Dashboard user={pb.authStore.model.username}/>
-                <div className="loggedin-div">
-                    <h1>{pb.authStore.model.email}</h1>
-                    <button 
-                    className="logout-btn"
-                    onClick={()=>{
-                        logout()
-                        setLogin(pb.authStore.isValid)
-                        }}>Log Out</button>
-                </div>
-            </>
+            <Dashboard user={pb.authStore.model.username}/>
         )
     }
 

@@ -1,0 +1,41 @@
+nav{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    flex-direction: row;
+    border-bottom: 1px solid grey;
+}
+
+nav h3{
+    font-size: 1.3rem;
+}
+
+.dashboard-content{
+    height: 60vh;
+    width: 90vw;
+}
+
+.username{
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.main-dashboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logout-btn{
+    font-size: 1rem;
+    padding: 10px;
+    background-color: rgb(248, 74, 74);
+    color: white;
+    border: none;
+    border-radius:5px ;
+    /* margin: 20px; */
+    cursor: pointer;
+}

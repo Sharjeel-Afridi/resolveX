@@ -16,18 +16,26 @@ const Main = () => {
     const apiResponse = useFetch(apiURL);
     const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
     
-    // function toggleClick(){
-    //     setIsDarkMode(!isDarkMode);
-    // }
-
     useEffect(() =>{
         document.body.className = isDarkMode ? 'dark-mode' : '';
     },[isDarkMode]);
 
     return (
         <div className="container">
-            <button className="toggle-btn" id="toggle-btn" onClick={toggleDarkMode}><img src={isDarkMode ? Sun : Moon}/> </button>        
-            <Link to="/pyqs" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>PYQ</Link>
+            <div className="navbar">
+                <Link to="/pyqs" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>PYQ</Link>
+                <div className="right-nav">
+                    <Link 
+                        to={"/login"}
+                        className="login-link"
+                    >
+                        Login
+                    </Link>
+                    <button className="toggle-btn" id="toggle-btn" onClick={toggleDarkMode}><img src={isDarkMode ? Sun : Moon}/> </button>
+                </div>
+                        
+            </div>
+            
             <div className="main">
                 <div className="title">
                     <h1>resolveX</h1>
