@@ -55,9 +55,23 @@ const Pyqs = () => {
 
     return (
         <>
+            <div className="navbar">
+                <Link to="/pyqs" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>PYQ</Link>
+                <div className="right-nav">
+                    <Link 
+                        to={"/login"}
+                        className="login-link"
+                    >
+                        Login
+                    </Link>
+                    <button className="toggle-btn" id="toggle-btn" onClick={toggleDarkMode}><img src={isDarkMode ? Sun : Moon}/> </button>
+                </div>
+                        
+            </div>
             {SearchBarComponent}
-            <button className="toggle-btn" id="toggle-btn" onClick={toggleDarkMode}><img src={isDarkMode ? Sun : Moon}/> </button>
-            <Link to="/" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>resolveX</Link>
+            
+            {/* <button className="toggle-btn" id="toggle-btn" onClick={toggleDarkMode}><img src={isDarkMode ? Sun : Moon}/> </button>
+            <Link to="/" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>resolveX</Link> */}
             <div className="section-pyqs">
                 {renderSection("First Year B.Tech & B.Arch", "1 year", "1")}
                 {renderSection("", "1 year", "2")}
