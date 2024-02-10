@@ -10,9 +10,9 @@ import DarkModeContext from "../utils/DarkModeContext";
 const Pyqs = () => {
 
     const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
-    const apiURL =  'https://notes-search.pockethost.io/api/collections/pyqs/records?perPage=100';
-    const apiResponse = useFetch(apiURL);
-    const {SearchBarComponent, searchTerm,showResults} = SearchBar(0, "pyqinput-div", "Search for PYQ's");
+    
+    const pyqResponse = useFetch();
+    // const {SearchBarComponent, searchTerm,showResults} = SearchBar(0, "pyqinput-div", "Search for PYQ's");
 
     useEffect(() =>{
         document.body.className = isDarkMode ? 'dark-mode' : '';
@@ -23,7 +23,7 @@ const Pyqs = () => {
            {title !== "" && <h1>{title}</h1>}
             <h3>{`Semester ${semester}`}</h3>
             <div className="pyqs-div">
-                {apiResponse != null && apiResponse.items
+                {pyqResponse != null && pyqResponse.items
                     .filter((element) => element.Branch === branch && element.semester === semester)
                     .map((element) => (
                         <Link 
@@ -41,7 +41,7 @@ const Pyqs = () => {
         </div>
     );
     
-    if(apiResponse === null){
+    if(pyqResponse === null){
         return (
             <div className="loading-div">
                 <div className="lds-ellipsis">
@@ -68,7 +68,7 @@ const Pyqs = () => {
                 </div>
                         
             </div>
-            {SearchBarComponent}
+            {/* {SearchBarComponent} */}
             
             {/* <button className="toggle-btn" id="toggle-btn" onClick={toggleDarkMode}><img src={isDarkMode ? Sun : Moon}/> </button>
             <Link to="/" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>resolveX</Link> */}

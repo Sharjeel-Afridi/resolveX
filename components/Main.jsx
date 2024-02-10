@@ -12,8 +12,8 @@ import DarkModeContext from "../utils/DarkModeContext";
 
 const Main = () => {
     const {SearchBarComponent, searchTerm,showResults} = SearchBar(432.2, "", "Search for notes here");
-    const apiURL =  'https://sharjeel-afridi.github.io/resolvexApi/api.json';
-    const apiResponse = useFetch(apiURL);
+    
+    const apiResponse = useFetch();
     const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
     
     useEffect(() =>{
