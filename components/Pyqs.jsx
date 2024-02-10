@@ -56,7 +56,7 @@ const Pyqs = () => {
     return (
         <>
             <div className="navbar">
-                <Link to="/pyqs" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>PYQ</Link>
+                <Link to="/pyqs" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>resolveX</Link>
                 <div className="right-nav">
                     <Link 
                         to={"/login"}
