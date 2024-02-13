@@ -10,8 +10,8 @@ import DarkModeContext from "../utils/DarkModeContext";
 const Pyqs = () => {
 
     const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
-    
-    const pyqResponse = useFetch();
+    const pyqapiURL =  'https://notes-search.pockethost.io/api/collections/pyqs/records?perPage=100';
+    const pyqResponse = useFetch(pyqapiURL);
     // const {SearchBarComponent, searchTerm,showResults} = SearchBar(0, "pyqinput-div", "Search for PYQ's");
 
     useEffect(() =>{
