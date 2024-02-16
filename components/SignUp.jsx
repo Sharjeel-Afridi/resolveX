@@ -30,7 +30,7 @@ const Signup = () => {
 
   return ( userName != null ? (
     
-    <Dashboard user={userName}/>
+    <Dashboard />
     
   ) : (
     <div className='auth-container'>

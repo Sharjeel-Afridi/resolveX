@@ -6,6 +6,8 @@ import "../src/styles.css";
 import Auth from "../components/Auth";
 import Signup from "../components/SignUp";
 import { DarkModeProvider } from "../utils/DarkModeContext";
+import Dashboard from "../components/Dashboard";
+import { UserProvider } from "../utils/UserContext";
 
 const appRouter = createBrowserRouter([
     {
@@ -23,12 +25,19 @@ const appRouter = createBrowserRouter([
     {
         path: "/signup",
         element: <Signup />
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard />
     }
 ])
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <DarkModeProvider>
-        <RouterProvider router={appRouter}/>
-    </DarkModeProvider>);
+    <UserProvider>
+        <DarkModeProvider>
+            <RouterProvider router={appRouter}/>
+        </DarkModeProvider>
+    </UserProvider>
+    );

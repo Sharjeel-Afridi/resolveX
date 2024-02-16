@@ -10,7 +10,6 @@ const useFetch = (apiURL) => {
             
             try{
                 setApiResponse(await fetch(apiURL).then((resp)=>{return resp.json()}).then(data => {return data}));
-                pyqFetch();
                 
             }catch{
                 console.log("catch")

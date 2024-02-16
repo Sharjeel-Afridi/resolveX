@@ -1,10 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useContext, useState } from "react";
 import pb from "../lib/pocketbase";
+import UserContext from "./UserContext";
+
 const useLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(pb.authStore.isValid);
+  const { setLoggedinUser } = useContext(UserContext);
+  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,10 +18,16 @@ const useLogin = () => {
 
     try {
       const authData = await pb.collection('users').authWithPassword(email, password);
-      setLogin(pb.authStore.isValid);
+      if (authData){
+          setLogin(pb.authStore.isValid);
+          setLoggedinUser(pb.authStore.model.username);
+      }
     } catch (error) {
       console.log(error);
     }
+  
+
+    
 
     setEmail("");
     setPassword("");

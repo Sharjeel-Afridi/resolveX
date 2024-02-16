@@ -7,7 +7,8 @@ import Sun from "../sun.png";
 import "../src/styles.css";
 import SearchBar from "./SearchBar";
 import DarkModeContext from "../utils/DarkModeContext";
-
+import pb from "../lib/pocketbase";
+import UserContext from "../utils/UserContext";
 
 
 const Main = () => {
@@ -15,22 +16,36 @@ const Main = () => {
     const apiURL =  'https://sharjeel-afridi.github.io/resolvexApi/api.json';
     const apiResponse = useFetch(apiURL);
     const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
-    
+    const { loggedinUser, setLoggedinUser } = useContext(UserContext);
+    const isValid = pb.authStore.isValid ;
+
     useEffect(() =>{
         document.body.className = isDarkMode ? 'dark-mode' : '';
     },[isDarkMode]);
+
+    useEffect(() => {
+        if(isValid){
+            setLoggedinUser(pb.authStore.model.username);
+        }
+    }, [])
 
     return (
         <div className="container">
             <div className="navbar">
                 <Link to="/pyqs" className={`route-btn ${isDarkMode ? 'dark-mode' : ''}`}>PYQ</Link>
                 <div className="right-nav">
-                    <Link 
-                        to={"/login"}
-                        className="login-link"
-                    >
-                        Login
-                    </Link>
+                    {isValid ? (
+
+                        <Link to={'/dashboard'} className="user">{loggedinUser}</Link>
+                    ): (
+                        <Link 
+                            to={"/login"}
+                            className="login-link"
+                        >
+                            Login
+                        </Link>
+                        
+                    )}
                     <button className="toggle-btn" id="toggle-btn" onClick={toggleDarkMode}><img src={isDarkMode ? Sun : Moon}/> </button>
                 </div>
                         

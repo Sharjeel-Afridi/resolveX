@@ -1,19 +1,18 @@
-import pb from "../lib/pocketbase";
+import { useNavigate } from "react-router-dom";
 import useLogin from "../utils/useLogin";
 import { Link } from "react-router-dom";
 import "../src/auth.css";
-import Dashboard from "./Dashboard";
 
 
 
 
 const Auth = () => {
     const { email, setEmail, password, setPassword, login, handleSubmit } = useLogin();
+    const navigate = useNavigate();
+
 
     if(login){
-        return (
-            <Dashboard user={pb.authStore.model.username}/>
-        )
+        navigate('/dashboard');
     }
 
     return(
