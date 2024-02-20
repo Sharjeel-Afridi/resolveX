@@ -430,6 +430,26 @@ img{
 } 
   
 
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  /* color: rgba(255, 255, 255,0.7); */
+  font-weight: 400;
+}
+.footer a{
+  margin-left: 4px;
+  text-decoration: none;
+  color: rgb(164, 112, 209);
+  font-weight: 500;
+  transition: all 0.3s ;
+}
+.footer a:hover{
+  text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.3) ;
+}
+
+
 ::-webkit-scrollbar{
     width: 8px;
     border-radius: 10px;

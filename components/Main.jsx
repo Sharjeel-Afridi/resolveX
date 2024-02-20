@@ -11,6 +11,7 @@ import pb from "../lib/pocketbase";
 import UserContext from "../utils/UserContext";
 
 
+
 const Main = () => {
     const {SearchBarComponent, searchTerm,showResults} = SearchBar(432.2, "", "Search for notes here");
     const apiURL =  'https://sharjeel-afridi.github.io/resolvexApi/api.json';

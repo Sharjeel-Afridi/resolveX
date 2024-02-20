@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import useSearch from "../utils/useSearch";
 import { useEffect, useState } from "react";
+import Footer from "./Footer";
 
 
 const Results = ({api, input}) => {
@@ -71,7 +72,7 @@ const Results = ({api, input}) => {
                     )
                 }
             </div>
-            
+            <Footer />
            
         </div>
     );
