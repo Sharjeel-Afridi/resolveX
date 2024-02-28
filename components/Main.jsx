@@ -37,7 +37,7 @@ const Main = () => {
                 <div className="right-nav">
                     {isValid ? (
 
-                        <Link to={'/dashboard'} className="user">{loggedinUser}</Link>
+                        <Link to={'/dashboard'} className={`user ${isDarkMode ? 'dark-mode' : ''}`}>{loggedinUser}</Link>
                     ): (
                         <Link 
                             to={"/login"}
