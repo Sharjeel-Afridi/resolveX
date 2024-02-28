@@ -11,8 +11,17 @@ nav{
 nav h3{
     font-size: 1.3rem;
 }
+.nav-right{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 30px;
+}
 
 .dashboard-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 60vh;
     width: 90vw;
 }
