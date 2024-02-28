@@ -15,16 +15,7 @@ nav h3{
     display: flex;
     align-items: center;
 }
-.nav-right > button{
-    font-size: 1rem;
-    padding: 10px;
-    background-color: rgb(61, 188, 68);
-    color: white;
-    border: none;
-    border-radius:5px ;
-    margin: 20px;
-    cursor: pointer;
-}
+
 .dashboard-content{
     display: flex;
     justify-content: center;

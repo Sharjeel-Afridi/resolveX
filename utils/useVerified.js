@@ -1,21 +1,20 @@
 import pb from "../lib/pocketbase";
-import { useState, useEffect, useContext } from "react";
-import UserContext from "./UserContext";
+import { useState } from "react";
 
 const useVerified = () => {
 
-    const { loggedinUser } = useContext(UserContext);
+    
     const [isVerified, setIsVerified] = useState(false);
-    useEffect(() => {
-        async function checkVerified() {
-            const id = pb.authStore.model.id;
 
-            const userdata = await pb.collection('users').getOne(id);
-            setIsVerified(userdata.verified);
-        }
+    async function checkVerified() {
+        const id = pb.authStore.model.id;
 
-        if (pb.authStore.isValid) checkVerified();
-    }, [loggedinUser]);
+        const userdata = await pb.collection('users').getOne(id);
+        setIsVerified(userdata.verified);
+    }
+
+    
+    
 
     async function requestVerification() {
         const email = pb.authStore.model.email;
@@ -25,7 +24,7 @@ const useVerified = () => {
 
     }
 
-    return { isVerified, requestVerification };
+    return { isVerified, requestVerification, checkVerified };
 }
 
 export default useVerified;
