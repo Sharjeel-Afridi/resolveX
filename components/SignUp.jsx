@@ -3,6 +3,8 @@ import useCreateUser from '../utils/useCreateUser';
 import { Link } from 'react-router-dom';
 import "../src/auth.css"
 import Dashboard from './Dashboard';
+import useVerified from '../utils/useVerified';
+import Verify from './Verify';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -10,6 +12,8 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const {createUser, userName} = useCreateUser();
+  const  { isVerified, requestVerification, checkVerified} = useVerified();
+
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -28,7 +32,7 @@ const Signup = () => {
     
   };
 
-  return ( userName != null ? (
+  return ( userName !== null && isVerified ? (
     
     <Dashboard />
     
@@ -75,6 +79,8 @@ const Signup = () => {
         <p>Already have an account?</p>
         <Link to={"/login"}> Login</Link>
       </div>
+
+      {userName !== null && !isVerified && (<Verify  isVerified={isVerified} requestVerification={requestVerification} checkVerified={checkVerified} />)}
     </div>
  ) 
   );
