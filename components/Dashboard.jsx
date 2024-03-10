@@ -27,6 +27,7 @@ const Dashboard = () => {
     const removeBookmark = async (event, id) => {
         event.stopPropagation();
         await pb.collection('bookmarks').delete(id);
+        getResults()
     }
 
     useEffect(() =>{
@@ -36,7 +37,7 @@ const Dashboard = () => {
     useEffect(()=>{
         setLoggedinUser(pb.authStore.model.username);
         getResults()
-    },[records])
+    },[])
 
 
     function handleNotesClick(link){
@@ -56,8 +57,8 @@ const Dashboard = () => {
             </nav>
             <div className="main-dashboard">
                 <div className="dashboard-content new-div">
-                    {records == [] ? 
-                        records.map((element) => (
+                    {records == [] ?  (<h1>No Bookmarks Found</h1>)
+                    : records.map((element) => (
                         <div key={element.id} className="notes-div" onClick={() => handleNotesClick(element.notes)} >
                             <span className="title">{element.title}</span>
                             <div className="bottom-notes">
@@ -65,12 +66,11 @@ const Dashboard = () => {
                                     Year: {element.year}
                                 </span>
                                 <img 
-                                    src={isDarkMode ? {RemoveBookmark} : {RemoveBookmarkDark}}
+                                    src={isDarkMode ? RemoveBookmark : RemoveBookmarkDark}
                                     onClick={(event) => removeBookmark(event, element.id)}
                                 />
                             </div>
                         </div>))
-                        : (<h1>No Bookmarks Found</h1>)
                     }
                 </div>
                 <Link to="/" >

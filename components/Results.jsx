@@ -4,6 +4,7 @@ import useSearch from "../utils/useSearch";
 import { useEffect, useState, useContext } from "react";
 import Footer from "./Footer";
 import DarkModeContext from "../utils/DarkModeContext";
+import UserContext from "../utils/UserContext";
 import Bookmark from "../src/assets/bookmark-white.png";
 import BookmarkDark from "../src/assets/bookmark.png";
 
@@ -41,9 +42,10 @@ const Results = ({api, input}) => {
         
     };
 
-    const handleBookmark = async (event, note, title, year) => {
+    const handleBookmark = async (event, id, note, title, year) => {
         event.stopPropagation();
         const data = {
+            "id": id,
             "notes": note,
             "user": pb.authStore.model.id,
             "title": title,
@@ -86,7 +88,7 @@ const Results = ({api, input}) => {
                                     </span>
                                     <img src={isDarkMode ? Bookmark : BookmarkDark}
                                         onClick={(event) => {
-                                            handleBookmark(event,element.item.notes, element.item.Title, element.item.year)
+                                            handleBookmark(event,element.item.id, element.item.notes, element.item.Title, element.item.year)
                                             }
                                         }
                                     />
