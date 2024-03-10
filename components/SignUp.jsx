@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import useCreateUser from '../utils/useCreateUser';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../src/auth.css"
-import Dashboard from './Dashboard';
 import useVerified from '../utils/useVerified';
 import Verify from './Verify';
 
@@ -13,7 +12,7 @@ const Signup = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const {createUser, userName} = useCreateUser();
   const  { isVerified, requestVerification, checkVerified} = useVerified();
-
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -32,11 +31,11 @@ const Signup = () => {
     
   };
 
-  return ( userName !== null && isVerified ? (
-    
-    <Dashboard />
-    
-  ) : (
+  if( userName !== null && isVerified) {
+    navigate('/dashboard')
+  }
+
+  return (
     <div className='auth-container'>
       
       <div className='form-container'>
@@ -83,7 +82,6 @@ const Signup = () => {
       {userName !== null && !isVerified && (<Verify  isVerified={isVerified} requestVerification={requestVerification} checkVerified={checkVerified} />)}
     </div>
  ) 
-  );
 };
 
 export default Signup;

@@ -12,7 +12,7 @@ const Auth = () => {
 
 
     if(login){
-        navigate('/');
+        navigate('/dashboard');
     }
 
     return(
