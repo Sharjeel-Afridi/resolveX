@@ -6,6 +6,8 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../utils/UserContext";
 import Sun from "../sun.png";
 import Moon from "../moon.png";
+import RemoveBookmark from "../src/assets/remove-bookmark.png";
+import RemoveBookmarkDark from "../src/assets/remove-bookmark-dark.png";
 import DarkModeContext from "../utils/DarkModeContext";
 
 const Dashboard = () => {
@@ -63,7 +65,7 @@ const Dashboard = () => {
                                     Year: {element.year}
                                 </span>
                                 <img 
-                                    src={`../src/assets/${isDarkMode ? "remove-bookmark" : "remove-bookmark-dark"}.png`}
+                                    src={isDarkMode ? {RemoveBookmark} : {RemoveBookmarkDark}}
                                     onClick={(event) => removeBookmark(event, element.id)}
                                 />
                             </div>
