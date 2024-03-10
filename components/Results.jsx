@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import pb from "../lib/pocketbase";
 import useSearch from "../utils/useSearch";
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
@@ -8,7 +9,7 @@ const Results = ({api, input}) => {
 
     const [selectedFilter, setSelectedFilter] = useState('All');
     const unsortedResults = useSearch(api,input);
-
+    
     const results = unsortedResults.sort((a,b)=> a.item.Title.localeCompare(b.item.Title));
     
     useEffect(()=>{
@@ -38,6 +39,17 @@ const Results = ({api, input}) => {
         
     };
 
+    const handleBookmark = async (event, note, title, year) => {
+        event.stopPropagation();
+        const data = {
+            "notes": note,
+            "user": pb.authStore.model.id,
+            "title": title,
+            "year": year
+        }
+        const createdBookmark = await pb.collection('bookmarks').create(data);
+    }
+
     //use filtered array if filter is selected
     const resultType = selectedFilter != "All" ? newResults : results; 
     
@@ -66,7 +78,17 @@ const Results = ({api, input}) => {
                         resultType.map((element) => (
                             <div key={element.item.id} className="notes-div" onClick={() => handleNotesClick(element.item.notes)} >
                                 <span className="title">{element.item.Title}</span>
-                                <span className="year">Year: {element.item.year}</span>
+                                <div className="bottom-notes">
+                                    <span className="year">
+                                        Year: {element.item.year}
+                                    </span>
+                                    <img src="../src/assets/bookmark-white.png" 
+                                        onClick={(event) => {
+                                            handleBookmark(event,element.item.notes, element.item.Title, element.item.year)
+                                            }
+                                        }
+                                    />
+                                </div>
                             </div>
                         ))
                     )
