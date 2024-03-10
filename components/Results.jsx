@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
 import pb from "../lib/pocketbase";
 import useSearch from "../utils/useSearch";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Footer from "./Footer";
+import DarkModeContext from "../utils/DarkModeContext";
 
 
 const Results = ({api, input}) => {
 
     const [selectedFilter, setSelectedFilter] = useState('All');
     const unsortedResults = useSearch(api,input);
-    
+    const { isDarkMode } = useContext(DarkModeContext);
     const results = unsortedResults.sort((a,b)=> a.item.Title.localeCompare(b.item.Title));
     
     useEffect(()=>{
@@ -82,7 +83,7 @@ const Results = ({api, input}) => {
                                     <span className="year">
                                         Year: {element.item.year}
                                     </span>
-                                    <img src="../src/assets/bookmark-white.png" 
+                                    <img src={`../src/assets/${isDarkMode ? "bookmark-white" : "bookmark"}.png`}
                                         onClick={(event) => {
                                             handleBookmark(event,element.item.notes, element.item.Title, element.item.year)
                                             }
