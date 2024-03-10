@@ -14,7 +14,9 @@ const Results = ({api, input}) => {
     const unsortedResults = useSearch(api,input);
     const { isDarkMode } = useContext(DarkModeContext);
     const results = unsortedResults.sort((a,b)=> a.item.Title.localeCompare(b.item.Title));
-    
+    const {loggedinUser} = useContext(UserContext);
+
+
     useEffect(()=>{
         document.getElementById('new-div').scrollIntoView({behavior:'smooth'});
     }, []);
@@ -42,8 +44,8 @@ const Results = ({api, input}) => {
         
     };
 
-    const handleBookmark = async (event, id, note, title, year) => {
-        event.stopPropagation();
+    const handleBookmark = async (id, note, title, year) => {
+
         const data = {
             "id": id,
             "notes": note,
@@ -88,7 +90,12 @@ const Results = ({api, input}) => {
                                     </span>
                                     <img src={isDarkMode ? Bookmark : BookmarkDark}
                                         onClick={(event) => {
-                                            handleBookmark(event,element.item.id, element.item.notes, element.item.Title, element.item.year)
+                                            event.stopPropagation();
+                                            if(loggedinUser === ''){
+                                                alert("You are not logged in!")
+                                            }else{
+                                                handleBookmark(element.item.id, element.item.notes, element.item.Title, element.item.year)
+                                            }
                                             }
                                         }
                                     />
