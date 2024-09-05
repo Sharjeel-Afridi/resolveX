@@ -80,6 +80,8 @@ const Pyqs = () => {
                 {renderSection("B.Tech Electrical", "B.Tech Electrical", "3")}
                 {renderSection("B.Tech Electronics", "B.Tech Electronics", "3")}
                 {renderSection("B.Arch", "B.Arch", "3")}
+                {renderSection("B.Tech", "Mechanical", "3")}
+                {renderSection("B.Tech", "Automobile", "3")}
             </div>
         </>
     );
